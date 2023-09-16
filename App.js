@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import ComponentsScreen from "./src/screens/ComponentsScreens";
+import ListScreen from "./src/screens/ListScreen";
+import ImageScreen from "./src/screens/ImageScreen";
+import CounterScreen from "./src/screens/CounterScreen";
+import ColorScreen from "./src/screens/ColorScreen";
+import SquareScreen from "./src/screens/SquareScreen";
+import SquareScreen2 from "./src/screens/SquareScreen2";
+import TextScreen from "./src/screens/TextScreen";
+import BoxScreen from "./src/screens/BoxScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const navigator = createStackNavigator(
+   {
+      Home: HomeScreen,
+      Components: ComponentsScreen,
+      List: ListScreen,
+      Image: ImageScreen,
+      Counter: CounterScreen,
+      Color: ColorScreen,
+      Square: SquareScreen,
+      Square2: SquareScreen2,
+      Text: TextScreen,
+      Box: BoxScreen,
+   },
+   {
+      initialRouteName: "Home",
+      defaultNavigationOptions: {
+         title: "App",
+      },
+   }
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default createAppContainer(navigator);
